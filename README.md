@@ -24,7 +24,8 @@ This project was made using the follow technologies:
 
 ## Prerequisites
 - [ ] Postgresql database local or on a server
-- [ ] A Kafka service local or on a server (recommendation: https://upstash.com) 
+- [ ] A Kafka service local or on a server (recommendation: https://upstash.com)
+- [ ] A topic in kafka called: notifications.send-notification
 
 ## Clone Repository
 ```bash
