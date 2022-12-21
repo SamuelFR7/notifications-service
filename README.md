@@ -23,7 +23,8 @@ This project was made using the follow technologies:
 # 💻 How to run
 
 ## Prerequisites
-- [ ]  Postgresql database local or on a server
+- [ ] Postgresql database local or on a server
+- [ ] A Kafka service local or on a server (recommendation: https://upstash.com) 
 
 ## Clone Repository
 ```bash
@@ -41,6 +42,10 @@ cp .env.example .env
 ## Run migrations in database
 ```bash
 yarn prisma migrate dev
+```
+## Run script for testing kafka produce send notification
+```bash
+yarn kafka:produce
 ```
 ## Run Aplication in backend in frontend
 ```bash
