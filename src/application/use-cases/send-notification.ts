@@ -30,7 +30,7 @@ export class SendNotification {
       category,
     });
 
-    this.notificationsRepository.create(notification);
+    await this.notificationsRepository.create(notification);
 
     return {
       notification,
