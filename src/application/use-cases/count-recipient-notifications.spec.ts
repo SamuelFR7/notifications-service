@@ -1,5 +1,6 @@
 import { Content } from '@application/entities/content';
 import { Notification } from '@application/entities/notification';
+import { makeNotification } from '@test/factories/NotificationFactory';
 import { InMemoryNotificationsRepository } from '@test/repositories/in-memory-notifications-repository';
 import { randomUUID } from 'crypto';
 import { CountRecipientNotification } from './count-recipient-notifications';
@@ -13,21 +14,13 @@ describe('Count recipient notification use case', () => {
 
     const recipientId = randomUUID();
 
-    const notification = new Notification({
-      content: new Content('Nova solicitação de amizade'),
-      category: 'Social',
-      recipientId: recipientId,
-    });
-
     notificationsRepository.create(
-      new Notification({
-        content: new Content('Nova solicitação de amizade'),
-        category: 'Social',
-        recipientId: 'random-id',
-      }),
+      makeNotification({ recipientId: recipientId }),
     );
 
-    notificationsRepository.create(notification);
+    notificationsRepository.create(
+      makeNotification({ recipientId: 'another-recipient-id' }),
+    );
 
     const { count } = await countRecipientNotification.execute({ recipientId });
 

@@ -2,7 +2,7 @@ import { Replace } from '@helpers/replace';
 import { randomUUID } from 'crypto';
 import { Content } from './content';
 
-interface NotificationProps {
+export interface NotificationProps {
   recipientId: string;
   content: Content;
   category: string;
