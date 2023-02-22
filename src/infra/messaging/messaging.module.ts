@@ -5,8 +5,8 @@ import { NotificationsController } from './kafka/controllers/notifications.contr
 import { KafkaConsumerService } from './kafka/kafka-consumer.service';
 
 @Module({
-  imports: [DatabaseModule],
-  providers: [KafkaConsumerService, SendNotification],
-  controllers: [NotificationsController],
+    imports: [DatabaseModule],
+    providers: [KafkaConsumerService, SendNotification],
+    controllers: [NotificationsController],
 })
 export class MessagingModule {}

@@ -9,15 +9,15 @@ import { ReadNotification } from '@application/use-cases/read-notification';
 import { UnreadNotification } from '@application/use-cases/unread-notification';
 
 @Module({
-  imports: [DatabaseModule],
-  controllers: [NotificationsController],
-  providers: [
-    SendNotification,
-    CancelNotification,
-    CountRecipientNotification,
-    GetRecipientNotification,
-    ReadNotification,
-    UnreadNotification,
-  ],
+    imports: [DatabaseModule],
+    controllers: [NotificationsController],
+    providers: [
+        SendNotification,
+        CancelNotification,
+        CountRecipientNotification,
+        GetRecipientNotification,
+        ReadNotification,
+        UnreadNotification,
+    ],
 })
 export class HttpModule {}

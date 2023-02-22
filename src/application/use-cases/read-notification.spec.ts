@@ -4,31 +4,31 @@ import { NotificationNotFound } from './errors/notification-not-found';
 import { makeNotification } from '@test/factories/NotificationFactory';
 
 describe('Read notification use case', () => {
-  it('should be able to Read a notification', async () => {
-    const notificationsRepository = new InMemoryNotificationsRepository();
-    const readNotification = new ReadNotification(notificationsRepository);
+    it('should be able to Read a notification', async () => {
+        const notificationsRepository = new InMemoryNotificationsRepository();
+        const readNotification = new ReadNotification(notificationsRepository);
 
-    const notification = makeNotification();
+        const notification = makeNotification();
 
-    await notificationsRepository.create(notification);
+        await notificationsRepository.create(notification);
 
-    await readNotification.execute({
-      notificationId: notification.id,
+        await readNotification.execute({
+            notificationId: notification.id,
+        });
+
+        expect(notificationsRepository.notifications[0].readAt).toEqual(
+            expect.any(Date),
+        );
     });
 
-    expect(notificationsRepository.notifications[0].readAt).toEqual(
-      expect.any(Date),
-    );
-  });
+    it('should not be able to Read a non existing notification', async () => {
+        const notificationsRepository = new InMemoryNotificationsRepository();
+        const readNotification = new ReadNotification(notificationsRepository);
 
-  it('should not be able to Read a non existing notification', async () => {
-    const notificationsRepository = new InMemoryNotificationsRepository();
-    const readNotification = new ReadNotification(notificationsRepository);
-
-    expect(() => {
-      return readNotification.execute({
-        notificationId: 'fake-notification-id',
-      });
-    }).rejects.toThrow(NotificationNotFound);
-  });
+        expect(() => {
+            return readNotification.execute({
+                notificationId: 'fake-notification-id',
+            });
+        }).rejects.toThrow(NotificationNotFound);
+    });
 });
